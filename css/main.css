@@ -6,6 +6,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  /* overflow-x: hidden; */
 }
 
 :root {
@@ -13,6 +14,8 @@
   --mainBlue: #0000ff;
   --darkBlue: #020281;
   --veryDarkBlue: #020238;
+  --navbarColor: #ffffff;
+  overflow-x: hidden;
 }
 /* END OF GLOBAL STYLES */
 
@@ -24,8 +27,10 @@
 
 /* HEADER STYLES */
 header {
-  height: 70vh;
-  background-color: red;
+  height: 110vh;
+  background-image: url(../images/mobile-bg.png);
+  background-size: cover;
+  position: relative;
 }
 
 /* STYLES FOR OPEN AND CLOSE NAVIGATION ICON */
@@ -74,7 +79,7 @@ header {
 
 .mid-bar {
   width: 100%;
-  background-color: black;
+  background-color: var(--navbarColor);
   transition: all 200ms ease;
 }
 
@@ -88,7 +93,7 @@ header {
 .main-top-bar {
   width: 50%;
   height: 100%;
-  background-color: black;
+  background-color: var(--navbarColor);
 }
 
 .extension-top-bar {
@@ -99,7 +104,7 @@ header {
 .main-bottom-bar {
   width: 50%;
   height: 100%;
-  background-color: black;
+  background-color: var(--navbarColor);
 }
 
 .extension-bottom-bar {
@@ -108,4 +113,87 @@ header {
 }
 
 /* END OF STYLES FOR OPEN AND CLOSE NAVIGATION ICON */
+
+/* NAVIGATION ITEMS STYLES */
+.overlay {
+  width: 100vw;
+  height: calc(100vh - 50px);
+  background-color: #000000bb;
+  position: absolute;
+  top: 50px;
+  display: none;
+}
+
+.nav-items {
+  width: calc(100vw - 50px);
+  height: calc(100vh - 100px);
+  background-color: white;
+  position: absolute;
+  top: -600px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  transition: all 200ms ease;
+}
+
+.nav-item {
+  text-decoration: none;
+  line-height: 50px;
+  padding: 0 30px;
+  /* background-color: red; */
+  /* margin: 2px 0; */
+  font-size: 20px;
+  font-weight: 700;
+  border-bottom: 2px #01019b solid;
+  transition: all 200ms ease;
+  /* border-top: 1px #8a8aff solid; */
+}
+
+.nav-item:hover {
+  padding-left: 50px;
+}
+
+.contact-me {
+  width: 80%;
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 10px 0;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background-color: green;
+}
+/* END OF NAVIGATION ITEMS STYLES */
+
+/* FLOATING IMAGE STYLE */
+.floating-image {
+  /* background-color: red; */
+  position: absolute;
+  bottom: -150px;
+  right: -100px;
+}
+/* END OF FLOATING IMAGE STYLE */
+
+/* DESKTOP SCREEN FOR HEADER */
+@media screen and (min-width: 600px) {
+  header {
+    background-image: url(../images/bg1.jpg);
+  }
+
+  .floating-image {
+    transform: scale(2);
+    bottom: 0;
+    right: 0;
+  }
+}
+/* END OF DESKTOP SCREEN FOR HEADER */
+
 /* END OF HEADER STYLES */
