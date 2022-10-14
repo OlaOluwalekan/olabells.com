@@ -6,7 +6,6 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* overflow-x: hidden; */
 }
 
 :root {
@@ -15,8 +14,9 @@
   --darkBlue: #020281;
   --veryDarkBlue: #020238;
   --navbarColor: #ffffff;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
+
 /* END OF GLOBAL STYLES */
 
 /* MAIN CONTAINER */
@@ -31,6 +31,18 @@ header {
   background-image: url(../images/mobile-bg.png);
   background-size: cover;
   position: relative;
+  right: 0;
+  left: 0;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  /* background-color: #666604; */
+  z-index: 10;
 }
 
 /* STYLES FOR OPEN AND CLOSE NAVIGATION ICON */
@@ -42,10 +54,13 @@ header {
   justify-content: space-between;
   align-items: flex-end;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  right: 15px;
   cursor: pointer;
   animation: pulse 4s infinite;
+  z-index: 20;
 }
 
 .nav-bar:hover {
@@ -136,8 +151,16 @@ header {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px 0;
   transition: all 200ms ease;
+}
+
+.nav-links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-item {
@@ -145,7 +168,7 @@ header {
   line-height: 50px;
   padding: 0 30px;
   /* background-color: red; */
-  /* margin: 2px 0; */
+  margin: 2px;
   font-size: 20px;
   font-weight: 700;
   border-bottom: 2px #01019b solid;
@@ -158,40 +181,133 @@ header {
 }
 
 .contact-me {
-  width: 80%;
-  position: absolute;
-  bottom: 20px;
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-  font-size: 20px;
+  width: 100px;
+  font-size: 15px;
   padding: 10px 0;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
   color: white;
   background-color: green;
+  cursor: pointer;
 }
 /* END OF NAVIGATION ITEMS STYLES */
 
+/* INTRO STYLE */
+
 /* FLOATING IMAGE STYLE */
-.floating-image {
+.intro {
   /* background-color: red; */
+  overflow-x: hidden;
   position: absolute;
-  bottom: -150px;
-  right: -100px;
+  left: 0;
+  right: 0;
+  bottom: -130px;
+  /* opacity: 0.7; */
+}
+
+.floating-image {
+  /* background-color: green; */
+  width: 90%;
+  transform: translate(40%);
+  /* transform: translateY(10px); */
 }
 /* END OF FLOATING IMAGE STYLE */
+/* END OF INTRO STYLE */
 
-/* DESKTOP SCREEN FOR HEADER */
+/* TAB SCREEN FOR HEADER */
 @media screen and (min-width: 600px) {
   header {
     background-image: url(../images/bg1.jpg);
   }
 
+  .nav-bar {
+    display: none;
+  }
+
+  .nav-items {
+    position: unset;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: unset;
+    border-radius: unset;
+    padding: 0 30px;
+    background: none;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .nav-item {
+    padding: 0 10px;
+    color: white;
+    font-size: 15px;
+    border: none;
+    /* background-color: red; */
+    width: 70px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .nav-item::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    transition: transform 300ms ease;
+  }
+
+  .nav-item:hover {
+    /* border-bottom: 2px #01019b solid; */
+    padding-left: 10px;
+  }
+
+  .nav-item:hover::after {
+    transform: translateY(-15px);
+  }
+
+  .intro {
+    background: none;
+    bottom: -190px;
+  }
+
   .floating-image {
-    transform: scale(2);
-    bottom: 0;
-    right: 0;
+    width: 90%;
+    max-width: 700px;
+    transform: translateX(40%);
+  }
+}
+/* END OF TAB SCREEN FOR HEADER */
+
+/* DESKTOP SCREEN FOR HEADER */
+@media screen and (min-width: 1000px) {
+  header {
+    height: 130vh;
+  }
+
+  .intro {
+    width: 100%;
+    bottom: -270px;
+  }
+
+  .nav-item {
+    margin: 0 20px;
+    font-size: 20px;
+    width: 90px;
+  }
+
+  .floating-image {
+    width: 80%;
+    max-width: 970px;
+    transform: translateX(55%);
   }
 }
 /* END OF DESKTOP SCREEN FOR HEADER */

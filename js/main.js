@@ -6,10 +6,19 @@ const bottombar = document.querySelector(".bottom-bar");
 const navItems = document.querySelector(".nav-items");
 const overlay = document.querySelector(".overlay");
 
-// let navIsClosed = true;
-
 // TO OPEN AND CLOSE NAV BAR
 let navClosed = true;
+
+window.onresize = () => {
+  let windowWidth = window.innerWidth;
+  console.log(windowWidth);
+
+  if (windowWidth > 600 && !navClosed) {
+    RemoveOverlay();
+  } else if (windowWidth < 600 && !navClosed) {
+    AddOverlay();
+  }
+};
 
 navbar.onclick = () => {
   if (navClosed) {
@@ -26,7 +35,7 @@ navbar.onclick = () => {
     setTimeout(() => {
       ResizeBar(100);
     }, 100);
-    closeNav();
+    CloseNav();
     navClosed = true;
   }
 };
@@ -41,13 +50,20 @@ const ResizeBar = (width) => {
 
 const OpenNav = () => {
   navItems.style.top = "50px";
-  overlay.style.display = "flex";
-  document.body.style.overflow = "hidden";
-  // document.body.style.display = "none";
+  AddOverlay();
 };
 
-const closeNav = () => {
+const CloseNav = () => {
   navItems.style.top = "-600px";
+  RemoveOverlay();
+};
+
+const AddOverlay = () => {
+  overlay.style.display = "flex";
+  document.body.style.overflow = "hidden";
+};
+
+const RemoveOverlay = () => {
   overlay.style.display = "none";
   document.body.style.overflow = "unset";
 };
